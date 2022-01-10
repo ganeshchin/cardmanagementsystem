@@ -1,0 +1,5 @@
+CREATE TABLE `agora`.`userdetails` (userId int not null , kyc_status varchar(255),
+name varchar(255) not null, pan varchar(255), password varchar(255) not null,
+phone_number varchar(255) not null, title varchar(255), PRIMARY KEY(userId),
+CHECK (kyc_status in ('DONE','NOT_DONE')), CHECK (title in ('MR','MRS','Miss')))
+  
