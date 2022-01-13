@@ -12,11 +12,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import com.cardmanagementsystem.model.CardDetails;
 import com.cardmanagementsystem.model.UserDetails;
 
 @SpringBootTest
-public class CardDaoTest {
+ class CardDaoTest {
 	private Long futerDAtemillis = 1673461800000L;
 	@Mock
 	private Session session;

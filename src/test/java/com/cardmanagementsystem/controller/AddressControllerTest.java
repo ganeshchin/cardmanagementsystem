@@ -10,7 +10,7 @@ import com.cardmanagementsystem.model.AddressDetails;
 import com.cardmanagementsystem.model.UserDetails;
 
 @SpringBootTest
-public class AddressControllerTest {
+ class AddressControllerTest {
 	@Autowired
 	private AddressController addController;
 	@Autowired

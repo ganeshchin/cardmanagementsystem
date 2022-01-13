@@ -19,7 +19,7 @@ public class CardContoller {
 	private CardService cardService;
 
 	@PostMapping("/card")
-	public Response saveCard(@RequestBody @Valid CardDetails cardDetails) {  //NOSONAR
+	public Response saveCard(@RequestBody @Valid CardDetails cardDetails) { // NOSONAR
 
 		return cardService.saveCard(cardDetails);
 
@@ -30,9 +30,10 @@ public class CardContoller {
 		return cardService.getCardById(id);
 
 	}
+
 	@GetMapping("/api/getallcards")
 	public Response getAll() {
 		return cardService.getAllCardDetails();
-		 
+
 	}
 }

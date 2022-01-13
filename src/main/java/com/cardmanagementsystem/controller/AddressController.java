@@ -10,15 +10,14 @@ import com.cardmanagementsystem.configuration.Response;
 import com.cardmanagementsystem.model.AddressDetails;
 import com.cardmanagementsystem.service.AddressService;
 
-
 @RestController
 @RequestMapping
 public class AddressController {
 	@Autowired
-	 private AddressService addressService;
-	
+	private AddressService addressService;
+
 	@PostMapping("/address")
-	public Response saveAddress(@RequestBody @Valid AddressDetails address) { //NOSONAR
+	public Response saveAddress(@RequestBody @Valid AddressDetails address) { // NOSONAR
 
 		return addressService.saveAddress(address);
 

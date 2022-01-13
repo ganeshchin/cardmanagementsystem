@@ -14,7 +14,7 @@ import com.cardmanagementsystem.model.AddressDetails;
 import com.cardmanagementsystem.model.UserDetails;
 
 @SpringBootTest
-public class AddressDaoTest {
+ class AddressDaoTest {
 	@Mock
 	private Session session;
 	@Mock
@@ -25,7 +25,7 @@ public class AddressDaoTest {
 	private UserDao userDao;
 
 	@BeforeEach
-	public void setUp() {
+	 void setUp() {
 		when(sessionFactory.getCurrentSession()).thenReturn(session);
 		if (sessionFactory == null) {
 			session = sessionFactory.getCurrentSession();

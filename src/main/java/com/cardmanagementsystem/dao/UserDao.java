@@ -13,21 +13,21 @@ import com.cardmanagementsystem.model.UserDetails;
 @Transactional
 @Repository
 public class UserDao {
-	private static final Logger LOGGER=LoggerFactory.getLogger(UserDao.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserDao.class);
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	public UserDetails saveUser(UserDetails userDetails) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;
-		Integer isSuccess=0;
+		Integer isSuccess = 0;
 		try {
 			tx = session.beginTransaction();
 			isSuccess = (Integer) session.save(userDetails);
 			tx.commit();
 			if (isSuccess >= 1) {
 				return userDetails;
-			} 
+			}
 		} catch (Exception e) {
 			if (tx != null)
 				tx.rollback();
@@ -43,11 +43,11 @@ public class UserDao {
 		UserDetails dbUser = null;
 		try {
 			Transaction tx = session.beginTransaction();
-			dbUser =  session.get(UserDetails.class, userId);
+			dbUser = session.get(UserDetails.class, userId);
 			tx.commit();
 			if (dbUser != null) {
 				return dbUser;
-			} 
+			}
 		} catch (Exception e) {
 			LOGGER.error(e.getMessage());
 		} finally {

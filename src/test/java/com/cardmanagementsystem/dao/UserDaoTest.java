@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.cardmanagementsystem.model.UserDetails;
 
 @SpringBootTest
-public class UserDaoTest {
+ class UserDaoTest {
 	@Mock
 	private Session session;
 	@Mock

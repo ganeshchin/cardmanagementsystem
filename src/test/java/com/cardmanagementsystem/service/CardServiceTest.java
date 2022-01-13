@@ -14,7 +14,7 @@ import com.cardmanagementsystem.model.CardDetails;
 import com.cardmanagementsystem.model.UserDetails;
 
 @SpringBootTest
-public class CardServiceTest {
+ class CardServiceTest {
 	private Long futerDAtemillis = 1673461800000L;
 	@Autowired
 	private UserDao userDao;

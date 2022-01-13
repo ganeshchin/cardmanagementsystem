@@ -36,12 +36,12 @@ public class AddressDetails {
 	@NotNull
 	@Length(min = 3, max = 10)
 	private String pin;
-	
+
 	@Column(name = "city", nullable = false)
 	@NotNull
 	@Length(min = 1, max = 30)
 	private String city;
-	
+
 	@Column(name = "state", nullable = false)
 	@NotNull
 	@Length(min = 1, max = 30)

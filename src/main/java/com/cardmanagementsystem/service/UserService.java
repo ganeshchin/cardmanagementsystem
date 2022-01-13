@@ -16,8 +16,8 @@ import com.cardmanagementsystem.model.UserDetails;
 
 @Service
 public class UserService {
-	private static final String ERROR_STRING="error";
-	private static final String SUCCESS_STRING="success";
+	private static final String ERROR_STRING = "error";
+	private static final String SUCCESS_STRING = "success";
 	@Autowired
 	private UserDao userDao;
 	@Autowired
@@ -53,7 +53,7 @@ public class UserService {
 			}
 
 			String pwd = userDetails.getPassword();
-			userDetails.setPassword(Base64.encodeBase64(pwd.getBytes()).toString()); //NOSONAR
+			userDetails.setPassword(Base64.encodeBase64(pwd.getBytes()).toString()); // NOSONAR
 			if (!userDetails.getTitle().equals("Mr") && !userDetails.getTitle().equals("Mrs")
 					&& !userDetails.getTitle().equals("Miss")) {
 				response.setStatusCode("01");

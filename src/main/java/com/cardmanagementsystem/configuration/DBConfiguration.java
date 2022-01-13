@@ -14,36 +14,36 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class DBConfiguration {
 	@Value("${db.driver}")
-	private String DRIVER;
+	private String driver;
 
 	@Value("${db.password}")
-	private String PASSWORD;
+	private String password;
 
 	@Value("${db.url}")
-	private String URL;
+	private String url;
 
 	@Value("${db.username}")
-	private String USERNAME;
+	private String userName;
 
 	@Value("${hibernate.dialect}")
-	private String DIALECT;
+	private String diallect;
 
 	@Value("${hibernate.show_sql}")
-	private String SHOW_SQL;
+	private String showSql;
 
 	@Value("${hibernate.hbm2ddl.auto}")
-	private String HBM2DDL_AUTO;
+	private String hbm2ddlauto;
 
 	@Value("${entitymanager.packagesToScan}")
-	private String PACKAGES_TO_SCAN;
+	private String packagesToScan;
 
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(DRIVER);
-		dataSource.setUrl(URL);
-		dataSource.setUsername(USERNAME);
-		dataSource.setPassword(PASSWORD);
+		dataSource.setDriverClassName(driver);
+		dataSource.setUrl(url);
+		dataSource.setUsername(userName);
+		dataSource.setPassword(password);
 		return dataSource;
 	}
 
@@ -51,11 +51,11 @@ public class DBConfiguration {
 	public LocalSessionFactoryBean sessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setPackagesToScan(PACKAGES_TO_SCAN);
+		sessionFactory.setPackagesToScan(packagesToScan);
 		Properties hibernateProperties = new Properties();
-		hibernateProperties.put("hibernate.dialect", DIALECT);
-		hibernateProperties.put("hibernate.show_sql", SHOW_SQL);
-		hibernateProperties.put("hibernate.hbm2ddl.auto", HBM2DDL_AUTO);
+		hibernateProperties.put("hibernate.dialect", diallect);
+		hibernateProperties.put("hibernate.show_sql", showSql);
+		hibernateProperties.put("hibernate.hbm2ddl.auto", hbm2ddlauto);
 		sessionFactory.setHibernateProperties(hibernateProperties);
 
 		return sessionFactory;

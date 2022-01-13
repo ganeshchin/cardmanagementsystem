@@ -1,7 +1,6 @@
 package com.cardmanagementsystem.dao;
 
 import javax.transaction.Transactional;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -9,15 +8,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.cardmanagementsystem.model.AddressDetails;
 
 @Transactional
 @Repository
 public class AddressDao {
-	private static final Logger LOGGER=LoggerFactory.getLogger(AddressDao.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(AddressDao.class);
 	@Autowired
 	private SessionFactory sessionFactory;
+
 	public AddressDetails saveAddress(AddressDetails address) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = null;

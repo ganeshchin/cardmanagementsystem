@@ -10,7 +10,7 @@ import com.cardmanagementsystem.model.AddressDetails;
 import com.cardmanagementsystem.model.UserDetails;
 
 @SpringBootTest
-public class AddressServiceTest {
+ class AddressServiceTest {
 	@Autowired
 	private UserDao userDao;
 	@Autowired
