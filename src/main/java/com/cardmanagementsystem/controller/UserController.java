@@ -20,7 +20,7 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping("/user")
-	public Response saveUser(@RequestBody @Valid UserDetails userDetails) {
+	public Response saveUser(@RequestBody @Valid UserDetails userDetails) {  //NOSONAR
 
 		return userService.createUser(userDetails);
 

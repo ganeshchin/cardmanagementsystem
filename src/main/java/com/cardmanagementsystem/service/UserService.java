@@ -16,7 +16,8 @@ import com.cardmanagementsystem.model.UserDetails;
 
 @Service
 public class UserService {
-
+	private static final String ERROR_STRING="error";
+	private static final String SUCCESS_STRING="success";
 	@Autowired
 	private UserDao userDao;
 	@Autowired
@@ -24,12 +25,12 @@ public class UserService {
 
 	public Response createUser(UserDetails userDetails) {
 		Response response = new Response();
-		List<String> errors = new ArrayList<String>();
+		List<String> errors = new ArrayList<>();
 		try {
 
 			if (!userDetails.getKycStatus().equals("DONE") && !userDetails.getKycStatus().equals("NOT_DONE")) {
 				response.setStatusCode("01");
-				response.setStatusDescription("error");
+				response.setStatusDescription(ERROR_STRING);
 				response.setUserDetails(null);
 				response.setStatus(HttpStatus.BAD_REQUEST);
 				errors.add("please provide proper valid status");
@@ -43,7 +44,7 @@ public class UserService {
 			Matcher m = p.matcher(pan);
 			if (!m.matches()) {
 				response.setStatusCode("01");
-				response.setStatusDescription("error");
+				response.setStatusDescription(ERROR_STRING);
 				response.setUserDetails(null);
 				response.setStatus(HttpStatus.BAD_REQUEST);
 				errors.add("please provide  proper pan details");
@@ -52,11 +53,11 @@ public class UserService {
 			}
 
 			String pwd = userDetails.getPassword();
-			userDetails.setPassword(Base64.encodeBase64(pwd.getBytes()).toString());
+			userDetails.setPassword(Base64.encodeBase64(pwd.getBytes()).toString()); //NOSONAR
 			if (!userDetails.getTitle().equals("Mr") && !userDetails.getTitle().equals("Mrs")
 					&& !userDetails.getTitle().equals("Miss")) {
 				response.setStatusCode("01");
-				response.setStatusDescription("error");
+				response.setStatusDescription(ERROR_STRING);
 				response.setUserDetails(null);
 				response.setStatus(HttpStatus.BAD_REQUEST);
 				errors.add("please provide  proper title details");
@@ -66,16 +67,16 @@ public class UserService {
 
 			userDetails = userDao.saveUser(userDetails);
 
-			if (!(userDetails == null)) {
+			if (userDetails != null) {
 				response.setStatusCode("00");
-				response.setStatusDescription("success");
+				response.setStatusDescription(SUCCESS_STRING);
 				response.setUserDetails(userDetails);
 				response.setStatus(HttpStatus.CREATED);
 				return response;
 
 			} else {
 				response.setStatusCode("01");
-				response.setStatusDescription("error");
+				response.setStatusDescription(ERROR_STRING);
 				response.setUserDetails(null);
 				response.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
 				return response;
@@ -96,11 +97,11 @@ public class UserService {
 		AddressDetails dbAddressDetails = null;
 		dbUserDetails = userDao.findUserById(userId);
 		dbAddressDetails = addressDao.findAddressByUserId(userId);
-		List<String> errors = new ArrayList<String>();
+		List<String> errors = new ArrayList<>();
 
 		if (dbUserDetails != null && dbAddressDetails != null) {
 			response.setStatusCode("00");
-			response.setStatusDescription("success");
+			response.setStatusDescription(SUCCESS_STRING);
 			response.setAddressDetails(dbAddressDetails);
 			response.setUserDetails(dbUserDetails);
 			response.setStatus(HttpStatus.CREATED);
@@ -108,7 +109,7 @@ public class UserService {
 
 		} else {
 			response.setStatusCode("01");
-			response.setStatusDescription("error");
+			response.setStatusDescription(ERROR_STRING);
 			response.setUserDetails(dbUserDetails);
 			response.setStatus(HttpStatus.NOT_FOUND);
 			if (dbUserDetails == null) {

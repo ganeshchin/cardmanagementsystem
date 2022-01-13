@@ -36,7 +36,7 @@ public class CardDetails {
 	@Max(200)
 	private Integer dailyLimit;
 
-	@Length(min = 5, max = 6)
+	@Length(min = 5, max = 200)
 	@Column(name = "card_type", columnDefinition = "VARCHAR(6) CHECK (card_type IN ('DEBIT', 'CREDIT'))")
 	private String cardType;
 

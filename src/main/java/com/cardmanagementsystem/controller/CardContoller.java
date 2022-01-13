@@ -19,7 +19,7 @@ public class CardContoller {
 	private CardService cardService;
 
 	@PostMapping("/card")
-	public Response saveCard(@RequestBody @Valid CardDetails cardDetails) {
+	public Response saveCard(@RequestBody @Valid CardDetails cardDetails) {  //NOSONAR
 
 		return cardService.saveCard(cardDetails);
 

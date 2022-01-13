@@ -18,7 +18,7 @@ public class AddressController {
 	 private AddressService addressService;
 	
 	@PostMapping("/address")
-	public Response saveAddress(@RequestBody @Valid AddressDetails address) {
+	public Response saveAddress(@RequestBody @Valid AddressDetails address) { //NOSONAR
 
 		return addressService.saveAddress(address);
 
