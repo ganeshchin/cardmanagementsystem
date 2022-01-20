@@ -3,6 +3,7 @@ package com.cardmanagementsystem.service;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -39,7 +40,7 @@ public class CardService {
 			response.setStatusDescription(ERROR_STRING);
 			response.setCardDetails(null);
 			response.setStatus(HttpStatus.NOT_FOUND);
-			errors.add("given userid is not available in cardtable");
+			errors.add("no records avaliable in cardtable");
 			response.setErrors(errors);
 			return response;
 		} else {

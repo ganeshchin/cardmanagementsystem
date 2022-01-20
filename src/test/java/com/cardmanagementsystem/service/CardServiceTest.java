@@ -114,5 +114,9 @@ import com.cardmanagementsystem.model.UserDetails;
 		Response response = cardService.getAllCardDetails();
 		assertEquals(true, response.getStatusCode().equals("00"));
 	}
-
+	@Test()
+	 void getCardByUsedIdErrorCase() {
+		Response response = cardService.getCardById(89);
+		assertEquals(true, response.getStatusCode().equals("01"));
+	}
 }
