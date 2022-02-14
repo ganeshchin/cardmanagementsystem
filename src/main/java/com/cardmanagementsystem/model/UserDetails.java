@@ -22,7 +22,7 @@ public class UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "userid")
-	private int userId;
+	private Integer userId;
 
 	@NotNull
 	@Length(min = 10, max = 10, message = " should be 10 digits ")

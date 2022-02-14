@@ -1,8 +1,12 @@
 package com.cardmanagementsystem.controller;
 
+import java.util.HashMap;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +35,18 @@ public class UserController {
 	public Response getUserAndAddressDetailsById(@PathVariable int id) {
 		return userService.getUserAndAddressDetailsById(id);
 
+	}
+	@GetMapping("/api/userdetails1/{id}")
+	public ResponseEntity<Object> getUserAndAddressDetailsByIdSingleResponse(@PathVariable int id) {
+		Response response=userService.getUserAndAddressDetailsById(id);
+		if(response.getStatusCode().equals("00")) {
+			HashMap<String, Object> mapp=new HashMap<String, Object>();
+			mapp.put("userDetalis", response.getUserDetails());
+			mapp.put("addressDetails", response.getAddressDetails());
+			return new ResponseEntity<>(mapp, new HttpHeaders(), response.getStatus());
+			
+		}
+		return new ResponseEntity<>(response, new HttpHeaders(), response.getStatus());
 	}
 
 }

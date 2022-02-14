@@ -24,7 +24,7 @@ import lombok.NoArgsConstructor;
 public class CardDetails {
 	@Id
 	@Column(name = "userid", nullable = false)
-	private int userId;
+	private Integer userId;
 
 	@NotNull
 	@Length(min = 5, max = 20)
